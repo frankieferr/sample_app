@@ -1,0 +1,46 @@
+<h1 style="text-align:center">HOME PAGE</h1>
+<br>
+<% if notices.count > 0 %>
+  <div id="myCarousel" class="carousel slide">
+    <ol class="carousel-indicators">
+    	<% notices.each_with_index do |notice, idx| %>
+    		<% if idx == 0 %>
+    			<li data-target="#myCarousel" data-slide-to="<%= idx %>" class="active"></li>
+    		<% else %>
+    			<li data-target="#myCarousel" data-slide-to="<%= idx %>"></li>
+    		<% end %>
+      <% end %>
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+    	<% notices.order(:order_num).each_with_index do |notice, idx| %>
+  	  	<% if idx == 0 %>
+  	  		<div class="active item">
+  	  	<% else %>
+  	  		<div class="item">
+  	  	<% end %>
+  				<div class="home_notice">
+  					<div class="home_notice_head"><h3><%= notice.header %></h3></div>
+  					<div class="home_notice_content"><p><%= notice.body %></p></div>
+  				</div>
+  			</div>
+  	<% end %>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
+
+<% else %>
+
+  <div style="text-align:center; padding:20px;">
+    <p>There are no notices for <%= current_client.name %></p>
+  </div>  
+
+<% end %>
+
+
+
+
+
+

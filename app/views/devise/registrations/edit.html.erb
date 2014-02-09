@@ -1,0 +1,38 @@
+<div style="text-align:center">
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div <% unless current_user.has_role? :super_admin %> style="display:none" <% end %>>
+    <%= f.label :email %>
+    <%= f.email_field :email, :autofocus => true %>
+  </div>
+  <br />
+
+  <div>
+    <%= f.label :current_password %> 
+    <%= f.password_field :current_password %><br />
+    <i>(we need your current password to confirm your changes)</i>
+  </div>
+  <br />
+  
+  <div>
+    <%= f.label :password %> 
+    <%= f.password_field :password, :autocomplete => "off" %><br />
+    <i>(leave blank if you don't want to change it)</i>
+  </div>
+  <br />
+  
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <br />
+
+  <div><%= f.submit "Update", {class: "btn btn-primary"} %></div>
+<% end %>
+<div class="btn-group">
+<%= link_to "Back", :back, {:class => "btn btn-default"} %>
+</div>
+</div>

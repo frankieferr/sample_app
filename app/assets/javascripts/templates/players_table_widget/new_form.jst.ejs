@@ -1,0 +1,14 @@
+<form data-form="new" class="well">
+	<div class="field">
+    <label for="player_name">Name</label>
+    <input type="text" id="player_name" name="player[name]" data-rule-required="true"></input>
+  </div>
+  <div class="field">
+    <label for="player_age">Age</label>
+    <input type="text" id="player_age" name="player[age]" data-rule-required="true" data-rule-number="true" data-rule-positive="true" data-rule-integer="true"></input>
+  </div>
+  <div class="field">
+    <label for="player_number">Number</label>
+    <input type="text" id="player_number" name="player[number]" data-rule-required="true" data-rule-number="true" data-rule-positive="true" data-rule-integer="true" data-rule-number-not-taken="team"></input>
+  </div>
+</form>

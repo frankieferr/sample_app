@@ -1,0 +1,36 @@
+<div class="group">
+  <h3>{{= name }}</h3>
+
+  <div>
+  {{ if(Object.keys(players).length > 0) { }}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Number</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{ $.each(players, function(i, player) { }}
+          <tr>
+            <td>
+              {{= player.name }}
+            </td>
+            <td>
+              {{= player.age }}
+            </td>
+            <td>
+              {{= player.number }}
+            </td>
+          </tr>
+        {{ }); }}
+      </tbody>
+    </table>
+    {{ } else { }}
+      <p>There are no players in this team</p>
+    {{ } }}
+  </div>
+</div>

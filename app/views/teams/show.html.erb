@@ -1,0 +1,4 @@
+<div data-area="accordion team">
+	<%= render :partial => "teams/list_of_players", :locals => {:team => @team} %>
+</div>
+<%= render :partial => 'layouts/btn_group', :locals => {:instance => @team, :buttons => ["Edit", "Back"]} %>

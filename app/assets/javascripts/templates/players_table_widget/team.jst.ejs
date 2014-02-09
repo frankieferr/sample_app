@@ -1,0 +1,27 @@
+<div class="buttons pull-right">
+  {{ if(!team.accepted) { }}
+    <a class="btn btn-info" data-button="accept" style="color:white; float:right">Accept Team</a>
+  {{ } }}
+    <a class="btn btn-danger" data-button="delete_team" style="color:white;">Delete</a>
+</div>
+
+  <table data-table="players" class="table">
+    <thead>
+      <tr>
+        <th width="10%"></th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Number</th>
+      </tr>
+    </thead>
+
+    <tbody data-tbody="players" >
+    {{ if(player_count > 0) { }}
+      {{ $.each(team.players, function(i, player) { }}
+        {{= JST["templates/players_table_widget/player_row"](player)}}
+      {{ }); }}
+    {{ } else { }}
+        {{= JST["templates/table_widget/none_row"]({blanks: 3}) }}
+    {{ } }}
+    </tbody>
+  </table>

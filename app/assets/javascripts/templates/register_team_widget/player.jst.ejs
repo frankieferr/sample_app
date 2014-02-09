@@ -1,0 +1,16 @@
+<div data-area="player" style="border:1px solid gray; padding:10px; display:inline-block; float:left;">
+	<a class="btn btn-danger" data-button="remove" href="javascript:void(0)" style="float:right; margin:3px">X</a>
+	<div class="field">
+    <label>Name</label>
+    <input name="team[players_attributes][{{= index }}][name]" type="text" data-rule-required="true">
+  </div>
+  <div class="field">
+    <label>Age</label>
+    <input name="team[players_attributes][{{= index }}][age]" type="text" data-rule-required="true" data-rule-number="true" data-rule-positive="true" data-rule-integer="true">
+  </div>
+  <div class="field">
+    <label>Number</label>
+    <input name="team[players_attributes][{{= index }}][number]" type="text" data-rule-required="true" data-rule-number="true" data-rule-positive="true" data-rule-integer="true" data-rule-number-not-taken="register_team" data-input="number">
+  </div>
+</div>
+

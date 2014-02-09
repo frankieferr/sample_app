@@ -1,0 +1,11 @@
+<div class="group" data-notice="{{= id }}">
+    <h3>{{= header }}
+    </h3>
+
+    <div>
+      <div class="buttons" style="float:right">
+         <a class="btn btn-danger" data-button="delete" style="color:white;">Delete</a>
+      </div>
+      <p> {{= JST["templates/frankie_widget/best_in_place"]({text: body, url: '/notices/' + id, object: 'notice', attribute: 'body', type: 'textarea'}) }}</p>
+    </div>
+  </div>

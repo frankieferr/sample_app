@@ -1,0 +1,19 @@
+<div class="btn-group">
+	<% buttons.each do |button_name| %>
+		<%	if button_name == "Edit"
+				href_var = "/#{instance.id}/edit"
+			elsif button_name == "Back"
+				href_var = ""
+			elsif button_name == "Info" || button_name == "Delete"
+				href_var = "/#{instance.id}"
+			end %>
+
+			
+			<a type="button" class="btn btn-default" href="/<%= instance.class.name.downcase.tr(" ", "_") %>s<%= href_var %>" 
+
+				<% if button_name == "Delete" %> data-confirm="Are you sure?" data-method="delete" rel="nofollow" <% end %> 
+
+				><%= button_name %></a>
+
+		<% end %>
+</div>

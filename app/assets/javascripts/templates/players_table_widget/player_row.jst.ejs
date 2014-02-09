@@ -1,0 +1,14 @@
+ <tr data-player="{{= id }}">
+ 	<td>
+ 		<a data-button="remove" style="color:red; cursor: pointer; font-size: 20px; text-decoration: none;">x</a>
+ 	</td>
+  <td>
+    {{= JST["templates/frankie_widget/best_in_place"]({text: name, url: '/players/' + id, object: 'player', attribute: 'name', type: 'input'}) }}
+  </td>
+  <td>
+    {{= JST["templates/frankie_widget/best_in_place"]({text: age, url: '/players/' + id, object: 'player', attribute: 'age', type: 'input'}) }}
+  </td>
+  <td data-value="number">
+    {{= JST["templates/frankie_widget/best_in_place"]({text: number, url: '/players/' + id, object: 'player', attribute: 'number', type: 'input'}) }}
+  </td>
+</tr>

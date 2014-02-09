@@ -1,0 +1,89 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+div.body_yield {
+ 	border: 1px solid lightgray;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+div.home_notice {
+	background-color: lightgrey;
+	border: 1px ridge black; 
+}
+
+div.home_notice>div {
+	padding: 10px 70px;
+}
+
+div.home_notice>div.home_notice_head {
+	background-color:black; 
+	color:white; 
+	text-align:center;
+}
+.purr {
+  position: absolute;
+  right:25%;
+  width: 250px;
+  text-align: left;
+  padding:8px 35px 8px 14px;
+  margin-bottom:20px;
+  text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color:#fcf8e3;
+  border:1px solid #fbeed5;
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  &:first-letter { text-transform: uppercase; }
+}
+
+.best_in_place:hover {
+ 	cursor: pointer;
+}
+
+.img_in_place {
+	width: 15px;
+	height: 15px;
+	display: none;
+	position:absolute;
+}
+
+.accordion-heading {
+	padding:10px;
+	background-color: lightgray;
+}
+
+.home_notice_content{
+	height:400px; 
+	background-size:100% 100%; 
+	background-repeat:no-repeat;
+}
+
+.accepted {
+	background-color: lightgreen;
+}
+
+input.error {
+	border: 1px solid red !important;
+}
+textarea.error {
+	border: 1px solid red !important;
+}
+
+div.loading {
+	height: 300px;
+	width: 100%;
+}

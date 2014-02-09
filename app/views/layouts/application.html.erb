@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sport Management Site</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body style="padding:20px">
+<div class="well" style="text-align:center">
+	<% if user_signed_in? %>
+			<div class="btn-group" style="float:right;">
+			  	<a class="btn dropdown-toggle" style="margin-right:50px" data-toggle="dropdown" href="#">
+			    	<%= current_user.email %>
+			    	<span class="caret"></span>
+			  	</a>
+			  	<ul class="dropdown-menu">
+			  	<% unless current_user.has_role? :super_admin %>
+			  	<li><%= link_to "User Profile", current_client %></li>
+			  	<% end %>
+			    <li><%= link_to "Change password", edit_user_registration_path %></li>
+			    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+			  	</ul>
+			</div>
+
+		<% else %>
+			<div style="float:right">
+				<a href="/register" class="btn btn-danger" style="color:white">Register a team</a>
+				<%= link_to "Sign in", user_session_path, {:class => "btn btn-primary", :style => "color:white"} %>
+			</div>
+		<% end %>
+		<h1>
+			<img src="/assets/soccer_ball.svg" width="30" height="30" alt="Sorry could not display image"/>
+			<% if current_client %>
+				<%=current_client.name.upcase %>
+			<% end %>
+			<img src="/assets/soccer_ball.svg" width="30" height="30" alt="Sorry could not display image"/>
+		</h1>
+	</div>
+<div style="width:15%; height:100%; float:left;">
+	<ul class="nav nav-list">
+	  <li><a href="/home">Home</a></li>
+	  <li><a href="#">Competitions</a></li>
+	  <li><a href="#">Venues</a></li>
+	  <li><a href="#">Fixtures</a></li>
+	  <li><a href="#">Standings</a></li>
+	  <% if user_signed_in? %>
+	  	<% if current_user.has_role? :super_admin %>
+	  		<li><a href="/clients">Clients</a></li>
+	  	<% end %>
+	  	<% [Notice, Team].each do |clazz| %>
+		  	<% if can? :manage, clazz %>
+				  <li><a href="/<%= clazz.name.pluralize.gsub(' ', '_').downcase %>"><%= clazz.name.pluralize %></a></li>
+			  <% end %>
+		  <% end %>
+	  <% end %>
+	</ul>
+</div>
+
+<div style="width:85%; height:100%; float:left">
+	<div class="body_yield">
+	<% flash.each do |name, msg| %>
+		<div class="alert">  
+		  <a class="close" data-dismiss="alert">×</a>  
+		  <p><%=msg%></p>
+		</div>  
+
+	<% end %>
+   	<%= yield %>
+   	<br />
+   	<br />
+   	<br />
+   	<div style="text-align:center; width:100%; display: inline-block; padding-top: 30px;"><p>Created by <b>WebMasters</b><img src="/assets/masters.jpeg" width="60" height="40" alt="Sorry could not display image"/></p></div>
+   </div>
+</div>
+<br />
+<br />
+</body>
+</html>
