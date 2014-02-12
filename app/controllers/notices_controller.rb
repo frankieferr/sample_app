@@ -36,10 +36,8 @@ class NoticesController < ApplicationController
 
     respond_to do |format|
       if @notice.save
-        format.html { redirect_to @notice, notice: 'Notice was successfully created.' }
-        format.json { render action: 'index', status: :created, location: @notice }
+        format.json { render action: 'index', status: :created }
       else
-        format.html { render action: 'new' }
         format.json { render json: @notice.errors, status: :unprocessable_entity }
       end
     end
@@ -50,10 +48,8 @@ class NoticesController < ApplicationController
   def update
     respond_to do |format|
       if @notice.update(notice_params)
-        format.html { redirect_to @notice, notice: 'Notice was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
         format.json { respond_with_bip(@notice) }
       end
     end
@@ -67,7 +63,6 @@ class NoticesController < ApplicationController
     reorder_notices(current_client.id, @notice.order_num) if current_client
 
     respond_to do |format|
-      format.html { redirect_to notices_url }
       format.json { head :no_content }
     end
   end
@@ -81,7 +76,6 @@ class NoticesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to notices_url }
       format.json { head :no_content }
     end
   end

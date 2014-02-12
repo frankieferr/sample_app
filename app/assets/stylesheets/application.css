@@ -87,3 +87,10 @@ div.loading {
 	height: 300px;
 	width: 100%;
 }
+
+div.description {
+	text-align: center;
+	border: 1px solid grey;
+	padding: 10px;
+	margin: 20px 0px;
+}

@@ -18,21 +18,31 @@ SampleApp::Application.routes.draw do
   #######################
   # NOTICES             #
   #######################
-  resources :notices
+  get "notices", to: "notices#index"
+  post "notices", to: "notices#create"
+  put "notices/:id", to: "notices#update"
+  patch "notices/:id", to: "notices#update"
+  delete "notices/:id", to: "notices#destroy"
   post "notices/order_notices" => "notices#order_notices"
 
 
   #######################
   # PLAYERS             #
   #######################
-  # get "players" => "players#index"
-  resources :players
+  post "players", to: "players#create"
+  put "players/:id", to: "players#update"
+  patch "players/:id", to: "players#update"
+  delete "players/:id", to: "players#destroy"
 
 
   #######################
   # TEAMS               #
   #######################
-  resources :teams
+  get "teams", to: "teams#index"
+  post "teams", to: "teams#create"
+  put "teams/:id", to: "teams#update"
+  patch "teams/:id", to: "teams#update"
+  delete "teams/:id", to: "teams#destroy"
   patch "teams/:id/accept_team" => "teams#accept_team"
 
 

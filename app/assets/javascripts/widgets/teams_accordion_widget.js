@@ -1,6 +1,7 @@
 $.widget("frankie.teams_accordion", $.frankie.new_form_widget, {
 
 	_create: function() {
+    this.description = "Use this page to manage your teams and the players in each team";
 		this._super();
 		this._add_loading_mask();
 		this.teams_area = $(this.element).find("[data-area=teams]")[0];
@@ -26,9 +27,9 @@ $.widget("frankie.teams_accordion", $.frankie.new_form_widget, {
           remove_team: function(){
             $(team_placeholder).remove();
             this._add_alert("Successfully deleted the team", "success")
-          }.bind(this).bind(team_placeholder)
+          }.bind(this)
         });
-      }.bind(this).bind(team_placeholder).bind(team));
+      }.bind(this));
     }.bind(this));
     this._initialize_accordion(); 
     this._initialize_best_in_place();
@@ -44,7 +45,7 @@ $.widget("frankie.teams_accordion", $.frankie.new_form_widget, {
   _click_submit: function() {
   	if($(this.new_form).valid()) {
 
-      $(this.element).mask("Sending...");
+      $(this.new_form_area).mask("Sending...");
 
       var form_data = $(this.new_form).serializeArray();
 
@@ -65,7 +66,7 @@ $.widget("frankie.teams_accordion", $.frankie.new_form_widget, {
           this._add_alert(error, "error");
         }.bind(this),
         complete: function() {
-          $(this.element).unmask();
+          $(this.new_form_area).unmask();
         }.bind(this)
       });
 

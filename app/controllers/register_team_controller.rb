@@ -14,7 +14,7 @@ class RegisterTeamController < ApplicationController
     respond_to do |format|
       if @team.save
         format.html { redirect_to root_url, notice: 'Team was successfully submitted.' }
-        format.json { render action: '../teams/show', status: :created, location: @team, success: true}
+        format.json { render action: '../teams/show', status: :created, success: true}
       else
         format.html { render action: 'register' }
         format.json { render json: @team.errors, status: :unprocessable_entity }

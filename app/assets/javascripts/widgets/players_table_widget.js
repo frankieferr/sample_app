@@ -1,5 +1,5 @@
 //= require widgets/table_widget
-// TODO: ADD VALIDATION FOR PLAYER NUMBER UNIQUENESS SCOPED BY TEAM
+
 $.widget("frankie.players_table", $.frankie.table_widget, {
 	options: {
 		team: null,
@@ -70,8 +70,8 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
           	if(this.players_count == 0){
 	          	this._add_none_row(this.players_tbody, 3);
           	}
-		    	}.bind(this).bind(player_row));
-        }.bind(this).bind(player_row),
+		    	}.bind(this));
+        }.bind(this),
         error: function(data, status, error) {
           this._add_alert(error, "error");
         }.bind(this),
@@ -100,7 +100,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
   _click_submit: function() {
     if($(this.new_form).valid()) {
 
-      $(this.element).mask("Sending...");
+      $(this.new_form_area).mask("Sending...");
 
       var form_data = $(this.new_form).serializeArray();
 	    form_data.push({name: "player[team_id]", value: this.options.team_id});
@@ -128,7 +128,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
         	}.bind(this))
         }.bind(this),
         complete: function() {
-          $(this.element).unmask();
+          $(this.new_form_area).unmask();
         }.bind(this)
       });
 
