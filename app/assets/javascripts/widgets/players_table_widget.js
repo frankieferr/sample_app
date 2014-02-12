@@ -68,7 +68,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
 		        this._add_alert("Successfully deleted the player", "success");
           	this.players_count--;
           	if(this.players_count == 0){
-	          	this._add_none_row(this.players_tbody, 3);
+	          	this._add_none_row(this.players_tbody, 4);
           	}
 		    	}.bind(this));
         }.bind(this),

@@ -26,12 +26,6 @@ $.widget("frankie.frankie_widget", $.frankie.alerts_widget, {
 	_initialize_best_in_place: function() {
 		$("[data-action=best_in_place]").best_in_place();
 
-		// $.each($("[data-action=best_in_place]"), function(i , el) {
-		// 	$(el).bind("ajaxSuccess", function(){
-		// 		alert("success");
-		// 	});
-		// });
-
 		$("[data-action=best_in_place]").mouseover(function(){
 			$(this).parent().find("[data-img=img_in_place]").show();
 		});

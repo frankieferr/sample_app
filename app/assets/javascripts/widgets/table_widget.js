@@ -3,8 +3,8 @@ $.widget("frankie.table_widget", $.frankie.new_form_widget, {
 		this._super();
 	},
 
-	_add_none_row: function(tbody, blanks) {
-		var none_row = $.parseHTML(JST["templates/table_widget/none_row"]({blanks: blanks}));
+	_add_none_row: function(tbody, columns) {
+		var none_row = $.parseHTML(JST["templates/table_widget/none_row"]({columns: columns}));
 		$(tbody).html(none_row);
 	}
 });
