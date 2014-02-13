@@ -1,6 +1,6 @@
 <h1 style="text-align:center">HOME PAGE</h1>
 <br>
-<% if notices.count > 0 %>
+<% if notices && notices.count > 0 %>
   <div id="myCarousel" class="carousel slide">
     <ol class="carousel-indicators">
     	<% notices.each_with_index do |notice, idx| %>
@@ -34,7 +34,7 @@
 <% else %>
 
   <div style="text-align:center; padding:20px;">
-    <p>There are no notices for <%= current_client.name %></p>
+    <p>There are no notices</p>
   </div>  
 
 <% end %>

@@ -6,7 +6,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all.where(:client_id => current_client.id)
+    @teams = Team.all.where(:client_id => current_client.id) if current_client
     respond_to do |format|
       format.html { render action: 'index'}
       format.json { render action: 'index', :locals => {:teams => @teams} }

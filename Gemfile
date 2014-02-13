@@ -46,6 +46,9 @@ gem "nested_form"
 
 gem "ejs"
 
+gem "font-awesome-rails"
+
+gem "select2-rails"
 #gem 'protected_attributes'
 
 # Use ActiveModel has_secure_password

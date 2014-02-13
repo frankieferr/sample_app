@@ -1,6 +1,6 @@
  <tr data-player="{{= id }}">
  	<td>
- 		<a data-button="remove" style="color:red; cursor: pointer; font-size: 20px; text-decoration: none;">x</a>
+ 		<a data-button="remove" style="color:red; cursor: pointer; text-decoration: none;"><i class="fa fa-trash-o"></i></a>
  	</td>
   <td>
     {{= JST["templates/frankie_widget/best_in_place"]({text: name, url: '/players/' + id, object: 'player', attribute: 'name', type: 'input'}) }}

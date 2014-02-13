@@ -6,7 +6,7 @@ class NoticesController < ApplicationController
   # GET /notices
   # GET /notices.json
   def index
-    @notices = Notice.all.where(:client_id => current_client.id)
+    @notices = Notice.all.where(:client_id => current_client.id) if current_client
   end
 
   # GET /notices/1
@@ -32,7 +32,7 @@ class NoticesController < ApplicationController
 
     shuffle_notices(current_client.id) if current_client
 
-    @notices = Notice.all.where(:client_id => current_client.id)
+    @notices = Notice.all.where(:client_id => current_client.id) if current_client
 
     respond_to do |format|
       if @notice.save
