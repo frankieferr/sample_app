@@ -15,13 +15,7 @@
       </tr>
     </thead>
 
-    <tbody data-tbody="players" >
-    {{ if(player_count > 0) { }}
-      {{ $.each(team.players, function(i, player) { }}
-        {{= JST["templates/players_table_widget/player_row"](player)}}
-      {{ }); }}
-    {{ } else { }}
-        {{= JST["templates/table_widget/none_row"]({columns: 4}) }}
-    {{ } }}
+    <tbody data-tbody="players">
+    
     </tbody>
   </table>

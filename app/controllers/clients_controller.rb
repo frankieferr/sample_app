@@ -47,18 +47,9 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-
-    if current_user.has_role? :client
-      notice = 'Profile was successfully updated'
-    end
+    @notice.update(notice_params)
     respond_to do |format|
-      if @client.update(client_params)
-        format.html { redirect_to @client, notice: notice ||'Client was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { respond_with_bip(@client) }
-      end
+      format.json { render action: 'show'  }
     end
   end
 

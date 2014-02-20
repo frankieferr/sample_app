@@ -8,7 +8,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
 
 	_create: function() {
 		this.options.team_id = this.options.team.id;
-
+    this.team = this.options.team;
 		this.players_count = Object.keys(this.options.team.players).length;
 		this._super();
 		this.team_area = $(this.element).find("[data-area=team]")[0];
@@ -17,12 +17,25 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
 	},
 
   _setup: function() {
-    var team_table = $.parseHTML(JST["templates/players_table_widget/team"]({team: this.options.team, player_count: this.players_count}))
+    var team_table = $.parseHTML(JST["templates/players_table_widget/team"]({team: this.options.team}))
     $(this.team_area).html(team_table);
     this.players_table = $(this.element).find("[data-table=players]")[0];
     this.players_tbody = $(this.element).find("[data-tbody=players]")[0];
+    this._setup_players();
     this._bind_buttons();
-    this._initialize_best_in_place();
+    this._initialize_edit_in_place();
+  },
+
+  _setup_players: function() {
+    if(this.players_count > 0) { 
+      $.each(this.team.players, function(i, player) {
+        player.widget = $(this.element).data("widget")
+        var player = $.parseHTML(JST["templates/players_table_widget/player_row"](player));
+        $(this.players_tbody).append(player);
+      }.bind(this));
+    } else {
+      this._add_none_row(this.players_tbody, 4)
+    }
   },
 
 	_bind_buttons: function() {
@@ -112,6 +125,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
         success: function(data, status) {
           this._add_alert("Successfully created the player", "success");
           this._click_cancel();
+          data.widget = $(this.element).data("widget")
           var new_player_row = $.parseHTML(JST["templates/players_table_widget/player_row"](data));
           if(this.players_count == 0) {
           	$(this.players_tbody).html(new_player_row);
@@ -119,7 +133,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
 						$(this.players_tbody).append(new_player_row);
           }
           this._bind_remove_player_buttons(new_player_row);
-					this._initialize_best_in_place();
+					this._initialize_edit_in_place();
 					this.players_count++;
         }.bind(this),
         error: function(data, status, error) {

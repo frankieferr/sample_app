@@ -32,7 +32,7 @@ $.widget("frankie.teams_accordion", $.frankie.new_form_widget, {
       }.bind(this));
     }.bind(this));
     this._initialize_accordion(); 
-    this._initialize_best_in_place();
+    this._initialize_edit_in_place();
   },
 
 	_initialize_accordion: function() {

@@ -51,7 +51,7 @@ div.home_notice>div.home_notice_head {
   &:first-letter { text-transform: uppercase; }
 }
 
-.best_in_place:hover {
+.edit_in_place:hover {
  	cursor: pointer;
 }
 

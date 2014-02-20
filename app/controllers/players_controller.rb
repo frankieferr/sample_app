@@ -47,12 +47,9 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
   def update
+    @player.update(player_params)
     respond_to do |format|
-      if @player.update(player_params)
-        format.json { head :no_content }
-      else
-        format.json { respond_with_bip(@player) }
-      end
+      format.json { render action: 'show' }
     end
   end
 

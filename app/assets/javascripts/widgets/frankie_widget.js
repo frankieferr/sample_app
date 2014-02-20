@@ -23,23 +23,11 @@ $.widget("frankie.frankie_widget", $.frankie.alerts_widget, {
 		$(this.element).unmask()
 	},
 
-	_initialize_best_in_place: function() {
-		$("[data-action=best_in_place]").best_in_place();
-
-		$("[data-action=best_in_place]").mouseover(function(){
-			$(this).parent().find("[data-img=img_in_place]").show();
-		});
-
-		$("[data-action=best_in_place]").mouseout(function(){
-			$(this).parent().find("[data-img=img_in_place]").hide();
-		});
-
-		$("[data-action=best_in_place]").click(function(){
-			$('.form_in_place').submit(function(){
-				$("[data-img=img_in_place]").each(function(){
-					$(this).hide();
-				});
-			});
+	_initialize_edit_in_place: function() {
+		$(this.element).find("[data-widget=edit_in_place][data-belong-to=" + $(this.element).data("widget") + "]").edit_in_place({
+			add_alert: function(event, data){
+				this._add_alert(data.msg, data.alert_type, data.timeout, data.remove);
+			}.bind(this)
 		});
 	}
 })

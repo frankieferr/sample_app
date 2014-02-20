@@ -46,12 +46,9 @@ class NoticesController < ApplicationController
   # PATCH/PUT /notices/1
   # PATCH/PUT /notices/1.json
   def update
+    @notice.update(notice_params)
     respond_to do |format|
-      if @notice.update(notice_params)
-        format.json { head :no_content }
-      else
-        format.json { respond_with_bip(@notice) }
-      end
+      format.json { render action: 'show'  }
     end
   end
 

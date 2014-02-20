@@ -3,6 +3,10 @@ $.widget("frankie.register_team", $.frankie.frankie_widget, {
 		this.description = "Use this page to register a team. Click the Add Player button to add as many players as you wish for the team";
 		this._super();
 
+		this._setup();
+	},
+
+	_setup: function() {
 		this.team_form = $(this.element).find("[data-form=team]")[0];
 		this.team_form_area = $(this.element).find("[data-area=team_form]")[0];
 		this.players_area = $(this.element).find("[data-area=players]")[0];

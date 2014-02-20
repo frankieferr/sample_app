@@ -22,10 +22,13 @@ $.widget("frankie.notices_accordion", $.frankie.new_form_widget, {
       notices.push(notice);
     });
     notices.sort(function(a,b) { return parseInt(a.order_num) - parseInt(b.order_num)})
-    var notices_area = $.parseHTML(JST["templates/notices_accordion_widget/notices"]({notices: notices}))
-    $(this.notices_area).html(notices_area);
+    $.each(notices, function(i, notice){
+      notice.widget = $(this.element).data("widget");
+      var notice_section = $.parseHTML(JST["templates/notices_accordion_widget/notice"](notice))
+      $(this.notices_area).append(notice_section);
+    }.bind(this))
     this._initialize_accordion();
-    this._initialize_best_in_place();
+    this._initialize_edit_in_place();
     this._bind_delete_buttons();
   },
 

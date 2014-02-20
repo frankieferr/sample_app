@@ -3,12 +3,12 @@
  		<a data-button="remove" style="color:red; cursor: pointer; text-decoration: none;"><i class="fa fa-trash-o"></i></a>
  	</td>
   <td>
-    {{= JST["templates/frankie_widget/best_in_place"]({text: name, url: '/players/' + id, object: 'player', attribute: 'name', type: 'input'}) }}
+    {{= JST["templates/frankie_widget/edit_in_place"]({text: name, url: '/players/' + id, object: 'player', attribute: 'name', type: 'input', clazz:'input', widget: widget}) }}
   </td>
   <td>
-    {{= JST["templates/frankie_widget/best_in_place"]({text: age, url: '/players/' + id, object: 'player', attribute: 'age', type: 'input'}) }}
+    {{= JST["templates/frankie_widget/edit_in_place"]({text: age, url: '/players/' + id, object: 'player', attribute: 'age', type: 'input', clazz:'input-mini', widget: widget}) }}
   </td>
   <td data-value="number">
-    {{= JST["templates/frankie_widget/best_in_place"]({text: number, url: '/players/' + id, object: 'player', attribute: 'number', type: 'input'}) }}
+    {{= JST["templates/frankie_widget/edit_in_place"]({text: number, url: '/players/' + id, object: 'player', attribute: 'number', type: 'input', clazz:'input-mini', widget: widget}) }}
   </td>
 </tr>

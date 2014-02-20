@@ -34,7 +34,7 @@ end
 
 gem 'devise'
 
-gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place', :branch => 'rails-4'
+# gem 'best_in_place', :git => 'https://github.com/bernat/best_in_place', :branch => 'rails-4'
 
 gem 'jquery-turbolinks'
 
