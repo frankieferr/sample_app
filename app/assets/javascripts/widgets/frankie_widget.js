@@ -24,7 +24,7 @@ $.widget("frankie.frankie_widget", $.frankie.alerts_widget, {
 	},
 
 	_initialize_edit_in_place: function() {
-		$(this.element).find("[data-widget=edit_in_place][data-belong-to=" + $(this.element).data("widget") + "]").edit_in_place({
+		$(this.element).find("[data-widget=edit_in_place][data-belongs-to=" + $(this.element).data("widget") + "]").edit_in_place({
 			add_alert: function(event, data){
 				this._add_alert(data.msg, data.alert_type, data.timeout, data.remove);
 			}.bind(this)
