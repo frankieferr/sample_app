@@ -64,12 +64,14 @@ $.widget("frankie.edit_in_place", {
 			url: this.url,
 			data: data,
 			success: function(data, status) {
-				if(data.success){
+				if(data.success) {
 					this.value = $(this.input_element).val();
 				} else {
-					$.each(data.errors, function(name, error) {
-						this._trigger("add_alert", null, {msg: name.capitalize() + " " + error, alert_type: "error"})
-        	}.bind(this));
+					for(var index in data.errors) {
+						if(data.errors.hasOwnProperty(index)) {
+							this._trigger("add_alert", null, {msg: index.capitalize() + " " + data.errors[index], alert_type: "error"})
+						}
+					}
 				}
 			}.bind(this),
 			error: function(data, status, error) {

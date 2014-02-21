@@ -6,6 +6,6 @@
       <div class="buttons" style="float:right">
          <a class="btn btn-danger" data-button="delete" style="color:white;">Delete</a>
       </div>
-      <p> {{= JST["templates/frankie_widget/edit_in_place"]({text: body, url: '/notices/' + id, object: 'notice', attribute: 'body', type: 'input', widget: widget, clazz: 'input-large'}) }}</p>
+      <p> {{= JST["templates/frankie_widget/edit_in_place"]({text: body, url: '/notices/' + id, object: 'notice', attribute: 'body', type: 'textarea', clazz: 'input-large', widget: widget}) }}</p>
     </div>
   </div>

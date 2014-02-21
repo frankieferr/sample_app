@@ -31,7 +31,7 @@ $.widget("frankie.new_form_widget", $.frankie.frankie_widget, {
 	},
 
 	_click_new: function() {
-		if($(this.new_form_area).html() == ""){
+		if($(this.new_form_area).html() == "") {
 			var form = $.parseHTML(JST["templates/" + $(this.element).data("widget") + "_widget/new_form"]());
 			$(this.new_form_area).html(form);
 			this.new_form = $(this.element).find("[data-form=new]")[0];

@@ -14,19 +14,21 @@
       </thead>
 
       <tbody>
-        {{ $.each(players, function(i, player) { }}
-          <tr>
-            <td>
-              {{= player.name }}
-            </td>
-            <td>
-              {{= player.age }}
-            </td>
-            <td>
-              {{= player.number }}
-            </td>
-          </tr>
-        {{ }); }}
+        {{ for(var index in players) { }}
+          {{ if(players.hasOwnProperty(index)) { }}
+            <tr>
+              <td>
+                {{= players[index].name }}
+              </td>
+              <td>
+                {{= players[index].age }}
+              </td>
+              <td>
+                {{= players[index].number }}
+              </td>
+            </tr>
+          {{ } }}
+        {{ } }}
       </tbody>
     </table>
     {{ } else { }}

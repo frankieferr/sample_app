@@ -11,26 +11,28 @@ $.widget("frankie.teams_accordion", $.frankie.new_form_widget, {
       success: function(data) {
         this._setup(data);
 		  }.bind(this),
-      complete: function(){
+      complete: function() {
         this._remove_loading_mask();
       }.bind(this)
     });
 	},
 
   _setup: function(data) {
-    $.each(data.teams, function(i, team) {
-      var team_placeholder = $.parseHTML(JST["templates/teams_accordion_widget/teams"](team));
-      $(this.teams_area).append(team_placeholder);
-      $.each($(team_placeholder).find("[data-widget=players_table]"), function(i, players_table){
-        $(players_table).players_table({
-          team: team,
-          remove_team: function(){
-            $(team_placeholder).remove();
-            this._add_alert("Successfully deleted the team", "success")
-          }.bind(this)
-        });
-      }.bind(this));
-    }.bind(this));
+    for(var index in data.teams) {
+      if(data.teams.hasOwnProperty(index)) {
+        var team_placeholder = $.parseHTML(JST["templates/teams_accordion_widget/teams"](data.teams[index]));
+        $(this.teams_area).append(team_placeholder);
+        $.each($(team_placeholder).find("[data-widget=players_table]"), function(i, players_table) {
+          $(players_table).players_table({
+            team: data.teams[index],
+            remove_team: function() {
+              $(team_placeholder).remove();
+              this._add_alert("Successfully deleted the team", "success")
+            }.bind(this)
+          });
+        }.bind(this));
+      }
+    }
     this._initialize_accordion(); 
   },
 

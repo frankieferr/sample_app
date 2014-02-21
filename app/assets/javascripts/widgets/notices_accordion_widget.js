@@ -1,7 +1,7 @@
 $.widget("frankie.notices_accordion", $.frankie.new_form_widget, {
 	_create: function() {
     this.description = "Use this page to manage your notices. They are ordered from first to last. Reorder them as you wish by dragging and dropping them. To delete them you can drag and drop them out of the area";
-		this._super();
+    this._super();
     this._add_loading_mask();
 		this.notices_area = $(this.element).find("[data-area=notices]")[0];
 		$.ajax("/notices", {
@@ -10,23 +10,25 @@ $.widget("frankie.notices_accordion", $.frankie.new_form_widget, {
       success: function(data) {
         this._setup(data);
       }.bind(this),
-      complete: function(){
+      complete: function() {
         this._remove_loading_mask();
       }.bind(this)
 		});
 	},
 
   _setup: function(data) {
-    var notices = []
-    $.each(data.notices, function(id, notice){
-      notices.push(notice);
-    });
+    var notices = [];
+    for(var index in data.notices) {
+      if(data.notices.hasOwnProperty(index)) {
+        notices.push(data.notices[index])
+      }
+    }
     notices.sort(function(a,b) { return parseInt(a.order_num) - parseInt(b.order_num)})
-    $.each(notices, function(i, notice){
-      notice.widget = $(this.element).data("widget");
-      var notice_section = $.parseHTML(JST["templates/notices_accordion_widget/notice"](notice))
+    for(var i = 0; i < notices.length; i++) {
+      notices[i].widget = this.widgetName;
+      var notice_section = $.parseHTML(JST["templates/notices_accordion_widget/notice"](notices[i]))
       $(this.notices_area).append(notice_section);
-    }.bind(this))
+    }
     this._initialize_accordion();
     this._initialize_edit_in_place();
     this._bind_delete_buttons();
@@ -60,7 +62,7 @@ $.widget("frankie.notices_accordion", $.frankie.new_form_widget, {
         ui.item.children( "h3" ).triggerHandler( "focusout" );
         if(!delete_item) {
           var ids = [];
-          $(event.target).find("div.group").each(function(){
+          $(event.target).find("div.group").each(function() {
             ids.push($(this).attr("data-notice"));
           });
           $.ajax("/notices/order_notices", {
@@ -81,7 +83,7 @@ $.widget("frankie.notices_accordion", $.frankie.new_form_widget, {
    },
 
    _bind_delete_buttons: function() {
-    $(this.notices_area).find("[data-button=delete]").each(function(i, elem){
+    $(this.notices_area).find("[data-button=delete]").each(function(i, elem) {
       $(elem).click(function(event) {
         this._click_delete(event.target);
       }.bind(this))

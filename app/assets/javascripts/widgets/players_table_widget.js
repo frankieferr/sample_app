@@ -28,11 +28,13 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
 
   _setup_players: function() {
     if(this.players_count > 0) { 
-      $.each(this.team.players, function(i, player) {
-        player.widget = $(this.element).data("widget")
-        var player = $.parseHTML(JST["templates/players_table_widget/player_row"](player));
-        $(this.players_tbody).append(player);
-      }.bind(this));
+      for(var index in this.team.players) {
+        if(this.team.players.hasOwnProperty(index)) {
+          this.team.players[index].widget = this.widgetName;
+          var player = $.parseHTML(JST["templates/players_table_widget/player_row"](this.team.players[index]));
+          $(this.players_tbody).append(player);
+        }
+      }
     } else {
       this._add_none_row(this.players_tbody, 4)
     }
@@ -50,7 +52,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
     this._bind_remove_player_buttons(this.team_area);
   },
 
-  _bind_remove_player_buttons: function(element){
+  _bind_remove_player_buttons: function(element) {
     this.remove_buttons = $(element).find("[data-button=remove]");
     $(this.remove_buttons).click(function(event) {
       this._click_remove_player($(event.target).closest("tr"));
@@ -76,11 +78,11 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
         type: "delete",
         dataType: "json",
         success: function(data, status) {
-          $(player_row).fadeTo(100, 0, function(){
+          $(player_row).fadeTo(100, 0, function() {
 		        $(player_row).remove(); 
 		        this._add_alert("Successfully deleted the player", "success");
           	this.players_count--;
-          	if(this.players_count == 0){
+          	if(this.players_count == 0) {
 	          	this._add_none_row(this.players_tbody, 4);
           	}
 		    	}.bind(this));
@@ -125,7 +127,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
         success: function(data, status) {
           this._add_alert("Successfully created the player", "success");
           this._click_cancel();
-          data.widget = $(this.element).data("widget")
+          data.widget = this.widgetName;
           var new_player_row = $.parseHTML(JST["templates/players_table_widget/player_row"](data));
           if(this.players_count == 0) {
           	$(this.players_tbody).html(new_player_row);
@@ -137,9 +139,11 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
 					this.players_count++;
         }.bind(this),
         error: function(data, status, error) {
-        	$.each(data.responseJSON.errors, function(name, error){
-        		this._add_alert(name.capitalize() + " " + error, "error");
-        	}.bind(this))
+          for(var index in data.responseJSON.errors) {
+            if(data.responseJSON.errors.hasOwnProperty(index)) {
+              this._add_alert(index.capitalize() + " " + data.responseJSON.errors[index], "error");
+            }
+          }
         }.bind(this),
         complete: function() {
           $(this.new_form_area).unmask();

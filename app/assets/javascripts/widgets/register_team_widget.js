@@ -1,5 +1,5 @@
 $.widget("frankie.register_team", $.frankie.frankie_widget, {
-	_create: function(){
+	_create: function() {
 		this.description = "Use this page to register a team. Click the Add Player button to add as many players as you wish for the team";
 		this._super();
 
@@ -50,9 +50,11 @@ $.widget("frankie.register_team", $.frankie.frankie_widget, {
 					if(data.success) {
 						this._show_team_info(data);
 					} else {
-						$.each(data.errors, function(i, error){
-							this._add_alert(error, "error");
-						}.bind(this));
+						for(var index in data.errors) {
+							if(data.errors.hasOwnProperty(index)) {
+								this._add_alert(data.errors[index], "error");
+							}
+						}
 					}
 				}.bind(this),
 				error: function(data, status, error) {

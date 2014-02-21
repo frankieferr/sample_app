@@ -12,9 +12,9 @@ $.widget("frankie.alerts_widget", {
 		var alert = $.parseHTML(JST["templates/alerts_widget/alert"]({msg: msg, alert_type: alert_type}));
 		$(this.alerts_area).append(alert);
 
-		if(remove){
+		if(remove) {
 			window.setTimeout(function() {
-		    $(alert).fadeTo(500, 0).slideUp(500, function(){
+		    $(alert).fadeTo(500, 0).slideUp(500, function() {
 		        $(this).remove(); 
 		    });
 			}, timeout);
