@@ -51,7 +51,14 @@ $.widget("frankie.edit_in_place", {
 
 			$(this.input_element).blur(function() {
 				this._on_blur();
-			}.bind(this))
+			}.bind(this));
+			if(this.type == "input") {
+				$(this.input_element).keydown(function(event) {
+				  if(event.keyCode == '13') {
+						this._on_blur();
+				  }
+				}.bind(this));
+			}
 		}.bind(this))
 	},
 
@@ -69,13 +76,13 @@ $.widget("frankie.edit_in_place", {
 				} else {
 					for(var index in data.errors) {
 						if(data.errors.hasOwnProperty(index)) {
-							this._trigger("add_alert", null, {msg: index.capitalize() + " " + data.errors[index], alert_type: "error"})
+							this._trigger("add_alert", null, {msg: index.replace('_', ' ').capitalize() + " " + data.errors[index], alert_type: "error"})
 						}
 					}
 				}
 			}.bind(this),
 			error: function(data, status, error) {
-        this._add_alert(error, "error");
+				this._trigger("add_alert", null, {msg: error.capitalize(), alert_type: "error"})			
 			}.bind(this),
 			complete: function() {
 				$(this.element).html($(this.text_span));

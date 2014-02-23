@@ -1,3 +1,5 @@
+//= require widgets/new_form_widget
+
 $.widget("frankie.table_widget", $.frankie.new_form_widget, {
 	_create: function() {
 		this._super();

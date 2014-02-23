@@ -1,0 +1,7 @@
+<textarea class="span" id="{{=object}}_{{=attribute}}" name="{{=object}}[{{=attribute}}]" 
+{{ for(var rule in rules) { }}
+  {{ if(rules.hasOwnProperty(rule)) { }}
+    data-rule-{{=rule}}={{=rules[rule]}}
+  {{ } }}
+{{ } }}
+></textarea>

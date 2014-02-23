@@ -1,6 +1,3 @@
 <form data-form="new" class="well">
-	<div class="field">
-    <label for="team_name">Name</label>
-    <input type="text" id="team_name" name="team[name]" data-rule-required="true"></input>
-  </div>
+	{{= JST["templates/new_form_widget/new_form_attribute"]({object:"team", attribute: "name", type:"input", rules:{required:"true"} } ) }}
 </form>

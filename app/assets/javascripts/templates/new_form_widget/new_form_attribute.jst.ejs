@@ -1,0 +1,8 @@
+<div class="row-fluid">
+  <div class="span2">
+    <label for="{{=object}}_{{=attribute}}">{{=attribute.replace('_', ' ').capitalize()}}:</label>
+  </div>
+  <div class="span10">
+    {{= JST["templates/new_form_widget/new_form_" + type]({object:object, attribute:attribute, rules:rules } ) }}
+  </div>
+</div>

@@ -1,10 +1,5 @@
 <form data-form="new" class="well">
-	<div class="field">
-    <label for="notice_header">Header</label>
-    <textarea id="notice_header" name="notice[header]" style="width:100%" data-rule-required="true"></textarea>
-  </div>
-  <div class="field">
-    <label for="notice_body">Body</label>
-    <textarea id="notice_body" name="notice[body]" style="width:100%; height:200px" data-rule-required="true"></textarea>
-  </div>
+  {{= JST["templates/new_form_widget/new_form_attribute"]({object:"notice", attribute: "header", type:"textarea", rules:{required:"true"} } ) }}
+
+  {{= JST["templates/new_form_widget/new_form_attribute"]({object:"notice", attribute: "body", type:"textarea", rules:{required:"true"} } ) }}
 </form>

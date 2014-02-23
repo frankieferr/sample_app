@@ -1,1 +1,1 @@
-<textarea data-textarea="edit_in_place" class="{{= clazz }}">{{= value }}</textarea>
+<textarea data-textarea="edit_in_place" class="{{= clazz }}" style="width:100%" rows="{{= 1 + parseInt(value.length / 100) + value.split(/\r\n|\r|\n/g).length }}">{{= value }}</textarea>

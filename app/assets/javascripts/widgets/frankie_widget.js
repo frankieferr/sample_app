@@ -1,3 +1,5 @@
+//= require widgets/alert_widget
+
 $.widget("frankie.frankie_widget", $.frankie.alerts_widget, {
 	_create: function() {
 		var main = $.parseHTML(JST["templates/" + this.widgetName + "_widget/main"]());

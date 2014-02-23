@@ -1,12 +1,15 @@
 class Client < ActiveRecord::Base
 
-	has_many :players
-	has_many :teams
-	has_one :user
+	has_many :players, dependent: :destroy
+	has_many :teams, dependent: :destroy
+	has_many :notices, dependent: :destroy
+	has_one :user, dependent: :destroy
 
 	validates_presence_of :name
 	validates_presence_of :email
 	validates_presence_of :site_url
+	validates :email, uniqueness: :true
+	validates :site_url, uniqueness: :true
 
 	validates_format_of :email, :with => Devise::email_regexp
 

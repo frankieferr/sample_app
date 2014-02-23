@@ -1,0 +1,7 @@
+<form data-form="new" class="well">
+	{{= JST["templates/new_form_widget/new_form_attribute"]({object:"client", attribute: "name", type:"input", rules:{required:"true"} } ) }}
+
+  {{= JST["templates/new_form_widget/new_form_attribute"]({object:"client", attribute: "email", type:"input", rules:{required:"true", email:"true", "email-not-taken":"client"} } ) }}
+  
+  {{= JST["templates/new_form_widget/new_form_attribute"]({object:"client", attribute: "site_url", type:"input", rules:{required:"true", "site-url-not-taken":"client"} } ) }}
+</form>

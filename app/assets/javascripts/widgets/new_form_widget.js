@@ -1,3 +1,6 @@
+//= require widgets/frankie_widget
+
+
 $.widget("frankie.new_form_widget", $.frankie.frankie_widget, {
 
 	_create: function(add_loading_mask) {

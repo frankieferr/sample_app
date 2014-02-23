@@ -9,7 +9,7 @@ class ClientsController < ApplicationController
     if current_user.has_role? :super_admin
       @clients = Client.all
     else
-      redirect_to current_client
+      redirect_to home_path
     end
     
   end
@@ -35,10 +35,8 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render action: 'show', status: :created }
       else
-        format.html { render action: 'new' }
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +45,7 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-    @notice.update(notice_params)
+    @client.update(client_params)
     respond_to do |format|
       format.json { render action: 'show'  }
     end
@@ -58,7 +56,6 @@ class ClientsController < ApplicationController
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_url }
       format.json { head :no_content }
     end
   end

@@ -12,7 +12,11 @@ SampleApp::Application.routes.draw do
   #######################
   # CLIENTS             #
   #######################
-  resources :clients
+  get "clients", to: "clients#index"
+  post "clients", to: "clients#create"
+  put "clients/:id", to: "clients#update"
+  patch "clients/:id", to: "clients#update"
+  delete "clients/:id", to: "clients#destroy"
 
 
   #######################

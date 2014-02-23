@@ -1,0 +1,14 @@
+ <tr data-client="{{= id }}">
+ 	<td>
+ 		<a data-button="remove" style="color:red; cursor: pointer; text-decoration: none;"><i class="fa fa-trash-o"></i></a>
+ 	</td>
+  <td>
+    {{= JST["templates/frankie_widget/edit_in_place"]({text: name, url: '/clients/' + id, object: 'client', attribute: 'name', type: 'input', clazz:'input', widget: widget}) }}
+  </td>
+  <td data-value="email">
+    {{= JST["templates/frankie_widget/edit_in_place"]({text: email, url: '/clients/' + id, object: 'client', attribute: 'email', type: 'input', clazz:'input', widget: widget}) }}
+  </td>
+  <td data-value="site_url">
+    {{= JST["templates/frankie_widget/edit_in_place"]({text: site_url, url: '/clients/' + id, object: 'client', attribute: 'site_url', type: 'input', clazz:'input', widget: widget}) }}
+  </td>
+</tr>
