@@ -8,6 +8,6 @@ class Player < ActiveRecord::Base
 	validates :client, presence: true
 	
 	validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
-	validates :number, :numericality => { only_integer: true, greater_than_or_equal_to: 1  }, uniqueness: {scope: :team}
+	validates :number, numericality: { only_integer: true, greater_than_or_equal_to: 1  }, uniqueness: {scope: :team}
 
 end

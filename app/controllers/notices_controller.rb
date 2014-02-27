@@ -6,7 +6,7 @@ class NoticesController < ApplicationController
   # GET /notices
   # GET /notices.json
   def index
-    @notices = Notice.all.where(:client_id => current_client.id) if current_client
+    @notices = Notice.all.where(client_id: current_client.id) if current_client
   end
 
   # GET /notices/1
@@ -32,7 +32,7 @@ class NoticesController < ApplicationController
 
     shuffle_notices(current_client.id) if current_client
 
-    @notices = Notice.all.where(:client_id => current_client.id) if current_client
+    @notices = Notice.all.where(client_id: current_client.id) if current_client
 
     respond_to do |format|
       if @notice.save
@@ -89,7 +89,7 @@ class NoticesController < ApplicationController
     end
 
     def shuffle_notices(client_id)
-      notices = Notice.where(:client_id => client_id)
+      notices = Notice.where(client_id: client_id)
 
       notices.each do |notice|
         notice.update_attribute(:order_num, notice.order_num + 1)
@@ -97,7 +97,7 @@ class NoticesController < ApplicationController
     end
 
     def reorder_notices(client_id, order_num)
-      notices = Notice.where(:client_id => client_id).order(:order_num).select{ |n| n.order_num > order_num}
+      notices = Notice.where(client_id: client_id).order(:order_num).select{ |n| n.order_num > order_num}
       notices.each_with_index do |notice, index|
         notice.update_attribute(:order_num, order_num + index)
       end

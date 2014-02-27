@@ -6,10 +6,10 @@ class PlayersController < ApplicationController
   # GET /players
   # GET /players.json
   def index
-    @teams = Team.all.where(:client_id => current_client.id) if current_client
+    @teams = Team.all.where(client_id: current_client.id) if current_client
     respond_to do |format|
       format.html { render action: 'index'}
-      format.json { render action: 'index', :locals => {:teams => @teams} }
+      format.json { render action: 'index', locals: {teams: @teams} }
     end
   end
 

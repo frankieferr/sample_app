@@ -10,9 +10,9 @@ class Ability
       can :manage, :all
     elsif user.has_role? :client
       [Notice, Team, Player].each do |clazz|
-        can :manage, clazz, :client_id => user.client_id
+        can :manage, clazz, client_id: user.client_id
       end
-      can :manage, Client, :id => user.client_id
+      can :manage, Client, id: user.client_id
       cannot :create, Client
     else
       user.roles = :guest
@@ -31,7 +31,7 @@ class Ability
     # objects.
     # For example, here the user can only update published articles.
     #
-    #   can :update, Article, :published => true
+    #   can :update, Article, published: true
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities

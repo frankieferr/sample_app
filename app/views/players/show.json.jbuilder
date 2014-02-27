@@ -1,1 +1,1 @@
-json.partial! "show", :player => @player
+json.partial! "show", player: @player

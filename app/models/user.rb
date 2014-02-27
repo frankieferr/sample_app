@@ -23,10 +23,10 @@ class User < ActiveRecord::Base
 
   def self.find_for_authentication(warden_conditions)
     request = Thread.current[:request]
-    user = where(:email => warden_conditions[:email]).first
+    user = where(email: warden_conditions[:email]).first
     return user if user and user.has_role? :super_admin
 
     client = Client.select { |c| request.original_url =~ /#{c.site_url}/ }
-    where(:email => warden_conditions[:email], :client_id => client.first.id).first if client.count == 1
+    where(email: warden_conditions[:email], client_id: client.first.id).first if client.count == 1
   end
 end

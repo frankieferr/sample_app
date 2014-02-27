@@ -6,10 +6,10 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all.where(:client_id => current_client.id) if current_client
+    @teams = Team.all.where(client_id: current_client.id) if current_client
     respond_to do |format|
       format.html { render action: 'index'}
-      format.json { render action: 'index', :locals => {:teams => @teams} }
+      format.json { render action: 'index', locals: {teams: @teams} }
     end
   end
 
@@ -34,7 +34,7 @@ class TeamsController < ApplicationController
     @team.client = current_client if current_client
     respond_to do |format|
       if @team.save
-        format.json { render action: 'index', status: :created, :locals => {:teams => current_client.teams} }
+        format.json { render action: 'index', status: :created, locals: {teams: current_client.teams} }
       else
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
@@ -61,7 +61,7 @@ class TeamsController < ApplicationController
 
   def accept_team
     @team.accept
-    render :nothing => true
+    render nothing: true
   end
 
   private
