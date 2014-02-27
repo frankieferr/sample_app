@@ -47,6 +47,10 @@ gem "ejs"
 gem "font-awesome-rails"
 
 gem "select2-rails"
+
+gem "pry-rails"
+
+gem "awesome_print"
 #gem 'protected_attributes'
 
 # Use ActiveModel has_secure_password
