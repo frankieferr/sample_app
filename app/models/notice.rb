@@ -2,11 +2,11 @@ class Notice < ActiveRecord::Base
 
 	belongs_to :client
 
-	validates_presence_of :client_id
+	validates :client_id, presence: true
 
-	validates_presence_of :header
-	validates_presence_of :body
-	validates_presence_of :order_num
+	validates :header, presence: true
+	validates :body, presence: true
+	validates :order_num, presence: true
 
 	
 end

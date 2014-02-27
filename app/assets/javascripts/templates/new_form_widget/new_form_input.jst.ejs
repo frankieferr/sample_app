@@ -1,4 +1,4 @@
-<input class="span" type="text" id="{{=object}}_{{=attribute}}" name="{{=object}}[{{=attribute}}]" 
+<input data-input="form" class="span" type="text" id="{{=object}}_{{=attribute}}" name="{{=object}}[{{=attribute}}]" 
 {{ for(var rule in rules) { }}
   {{ if(rules.hasOwnProperty(rule)) { }}
     data-rule-{{=rule}}={{=rules[rule]}}

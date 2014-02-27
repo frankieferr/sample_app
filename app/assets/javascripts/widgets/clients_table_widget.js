@@ -2,7 +2,6 @@
 
 $.widget("frankie.clients_table", $.frankie.table_widget, {
 	_create: function() {
-    console.log("creating");
     this.description = "Manage the clients"
     this._super();
     $.ajax({

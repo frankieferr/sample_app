@@ -1,10 +1,10 @@
 class Team < ActiveRecord::Base
 	
 	belongs_to :client
-	has_many :players, :dependent => :destroy
+	has_many :players, dependent: :destroy
 
-	validates_presence_of :name
-	validates_presence_of :client
+	validates :name, presence: true
+	validates :client, presence: true
 
 	accepts_nested_attributes_for :players
 

@@ -1,0 +1,1 @@
+Add Game model. home_team_id, away_team_id, belongs to home_team, belongs to away_team. Team has_man home_games as home_team, has many away_games as away_team

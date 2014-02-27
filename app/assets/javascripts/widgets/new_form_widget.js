@@ -27,6 +27,15 @@ $.widget("frankie.new_form_widget", $.frankie.frankie_widget, {
 		}.bind(this))
 	},
 
+	_bind_enter_press_on_form: function() {
+		$(this.new_form).find("[data-input=form]").keydown(function(event) {
+			if(event.keyCode == '13') {
+				this._click_submit();
+				return false;
+			}
+		}.bind(this));
+	},
+
 	_bind_new_button: function() {
 		$(this.new_button).click(function() {
 			this._click_new();
@@ -42,6 +51,7 @@ $.widget("frankie.new_form_widget", $.frankie.frankie_widget, {
 			$(this.new_form).append(form_buttons);
 			$(this.new_button).hide();
 			this._bind_form_buttons();
+			this._bind_enter_press_on_form();
 		}
 	},
 

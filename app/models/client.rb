@@ -5,13 +5,9 @@ class Client < ActiveRecord::Base
 	has_many :notices, dependent: :destroy
 	has_one :user, dependent: :destroy
 
-	validates_presence_of :name
-	validates_presence_of :email
-	validates_presence_of :site_url
-	validates :email, uniqueness: :true
-	validates :site_url, uniqueness: :true
-
-	validates_format_of :email, :with => Devise::email_regexp
+	validates :name, presence: true
+	validates :email, presence: true, uniqueness: true, format: {with: Devise::email_regexp}
+	validates :site_url, presence: true, uniqueness: true
 
 	after_create :create_user
 	after_save :set_user_email
