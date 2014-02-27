@@ -40,8 +40,6 @@ gem 'cancan'
 
 gem 'role_model'
 
-gem "nested_form"
-
 gem "ejs"
 
 gem "font-awesome-rails"

@@ -25,6 +25,6 @@ class RegisterTeamController < ApplicationController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
-      params.require(:team).permit(:name, :client_id, players_attributes: [:id, :name, :age, :number, :client_id, :_destroy])
+      params.require(:team).permit(:name, :client_id, players_attributes: [:id, :name, :age, :number, :client_id])
     end
 end

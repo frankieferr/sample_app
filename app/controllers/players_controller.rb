@@ -13,22 +13,6 @@ class PlayersController < ApplicationController
     end
   end
 
-  # GET /players/1
-  # GET /players/1.json
-  def show
-  end
-
-  # GET /players/new
-  def new
-    @player = Player.new
-    @player.team = Team.find(params[:team_id]) if params[:team_id]
-    
-  end
-
-  # GET /players/1/edit
-  def edit
-  end
-
   # POST /players
   # POST /players.json
   def create

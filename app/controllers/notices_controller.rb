@@ -9,20 +9,6 @@ class NoticesController < ApplicationController
     @notices = Notice.all.where(client_id: current_client.id) if current_client
   end
 
-  # GET /notices/1
-  # GET /notices/1.json
-  def show
-  end
-
-  # GET /notices/new
-  def new
-    @notice = Notice.new
-  end
-
-  # GET /notices/1/edit
-  def edit
-  end
-
   # POST /notices
   # POST /notices.json
   def create

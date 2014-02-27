@@ -11,21 +11,6 @@ class ClientsController < ApplicationController
     else
       redirect_to home_path
     end
-    
-  end
-
-  # GET /clients/1
-  # GET /clients/1.json
-  def show
-  end
-
-  # GET /clients/new
-  def new
-    @client = Client.new
-  end
-
-  # GET /clients/1/edit
-  def edit
   end
 
   # POST /clients
