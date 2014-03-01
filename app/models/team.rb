@@ -2,6 +2,8 @@ class Team < ActiveRecord::Base
 	
 	belongs_to :client
 	has_many :players, dependent: :destroy
+	has_many :home_games, class_name: "Game", foreign_key: "home_team_id"
+	has_many :away_games, class_name: "Game", foreign_key: "away_team_id"
 
 	validates :name, presence: true
 	validates :client, presence: true
