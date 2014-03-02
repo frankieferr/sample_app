@@ -55,11 +55,12 @@ Player.create!(client_id: client2.id, name: "Neymar", age: 20, number: 28, team_
 
 
 # Notices
-Notice.create(order_num: 0, client_id: client1.id, header: "Under 15 Comp Starting Up", body: "Teams are now starting to register for this new competition, hurry and get your players together, come down and register")
-Notice.create(order_num: 1, client_id: client1.id, header: "The Rangers win the Under 8 Competition", body: "The Rangers won")
-Notice.create(order_num: 2, client_id: client1.id, header: "We are fun, Join Us", body: "You should really join us")
-Notice.create(order_num: 3, client_id: client1.id, header: "I am out of ideas already", body: "Seriously...")
-Notice.create(order_num: 0, client_id: client2.id, header: "Basketball notice", body: "You shouldn't see this unless you changed the site url")
+Notice.create!(order_num: 0, client_id: client1.id, header: "Under 15 Comp Starting Up", body: "Teams are now starting to register for this new competition, hurry and get your players together, come down and register")
+Notice.create!(order_num: 1, client_id: client1.id, header: "The Rangers win the Under 8 Competition", body: "The Rangers won")
+Notice.create!(order_num: 2, client_id: client1.id, header: "We are fun, Join Us", body: "You should really join us")
+Notice.create!(order_num: 3, client_id: client1.id, header: "I am out of ideas already", body: "Seriously...")
+Notice.create!(order_num: 0, client_id: client2.id, header: "Basketball notice", body: "You shouldn't see this unless you changed the site url")
 
+Game.create!(client_id: client1.id, home_team_id: 1, away_team_id: 2, home_team_score: 3, away_team_score: 1)
 
 puts "\n----------FINISHED SEEDS---------\n"

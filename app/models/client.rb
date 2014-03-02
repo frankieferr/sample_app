@@ -3,6 +3,7 @@ class Client < ActiveRecord::Base
 	has_many :players, dependent: :destroy
 	has_many :teams, dependent: :destroy
 	has_many :notices, dependent: :destroy
+	has_many :games, dependent: :destroy
 	has_one :user, dependent: :destroy
 
 	validates :name, presence: true

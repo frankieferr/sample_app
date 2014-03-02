@@ -9,7 +9,7 @@ class Ability
     if user.has_role? :super_admin
       can :manage, :all
     elsif user.has_role? :client
-      [Notice, Team, Player].each do |clazz|
+      [Notice, Team, Player, Game].each do |clazz|
         can :manage, clazz, client_id: user.client_id
       end
       can :manage, Client, id: user.client_id

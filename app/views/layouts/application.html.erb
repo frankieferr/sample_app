@@ -46,7 +46,7 @@
 		  	<% if current_user.has_role? :super_admin %>
 		  		<li><a href="/clients">Clients</a></li>
 		  	<% end %>
-		  	<% [Notice, Team].each do |clazz| %>
+		  	<% [Notice, Team, Game].each do |clazz| %>
 			  	<% if can? :manage, clazz %>
 					  <li><a href="/<%= clazz.name.pluralize.gsub(' ', '_').downcase %>"><%= clazz.name.pluralize %></a></li>
 				  <% end %>

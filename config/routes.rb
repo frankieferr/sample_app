@@ -49,6 +49,15 @@ SampleApp::Application.routes.draw do
   delete "teams/:id", to: "teams#destroy"
   patch "teams/:id/accept_team" => "teams#accept_team"
 
+  #######################
+  # GAMES               #
+  #######################
+  get "games", to: "games#index"
+  post "games", to: "games#create"
+  put "games/:id", to: "games#update"
+  patch "games/:id", to: "games#update"
+  delete "games/:id", to: "games#destroy"
+
 
   #######################
   # USERS               #
