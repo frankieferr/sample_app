@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140302032506) do
+ActiveRecord::Schema.define(version: 20140302074006) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20140302032506) do
     t.integer  "home_team_score"
     t.integer  "away_team_score"
     t.integer  "client_id"
+    t.date     "date"
+    t.time     "time"
   end
 
   create_table "notices", force: true do |t|

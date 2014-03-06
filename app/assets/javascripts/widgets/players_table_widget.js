@@ -55,7 +55,7 @@ $.widget("frankie.players_table", $.frankie.table_widget, {
   _bind_remove_player_buttons: function(element) {
     this.remove_buttons = $(element).find("[data-button=remove]");
     $(this.remove_buttons).click(function(event) {
-      this._click_remove_player($(event.target).closest("tr"));
+      this._click_remove_player($(event.currentTarget).closest("tr"));
     }.bind(this));
   },
 

@@ -27,4 +27,8 @@ class Client < ActiveRecord::Base
 	def set_user_email
 		self.user.update_attribute(:email, self.email)
 	end
+
+	def get_todays_games
+		self.games.where(date: Date.today)
+	end
 end

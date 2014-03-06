@@ -62,7 +62,7 @@ $.widget("frankie.notices_accordion", $.frankie.new_form_widget, {
         ui.item.children( "h3" ).triggerHandler( "focusout" );
         if(!delete_item) {
           var ids = [];
-          $(event.target).find("div.group").each(function() {
+          $(event.currentTarget).find("div.group").each(function() {
             ids.push($(this).attr("data-notice"));
           });
           $.ajax("/notices/order_notices", {
@@ -85,7 +85,7 @@ $.widget("frankie.notices_accordion", $.frankie.new_form_widget, {
    _bind_delete_buttons: function() {
     $(this.notices_area).find("[data-button=delete]").each(function(i, elem) {
       $(elem).click(function(event) {
-        this._click_delete(event.target);
+        this._click_delete(event.currentTarget);
       }.bind(this))
     }.bind(this))
    },

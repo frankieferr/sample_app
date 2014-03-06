@@ -61,6 +61,6 @@ Notice.create!(order_num: 2, client_id: client1.id, header: "We are fun, Join Us
 Notice.create!(order_num: 3, client_id: client1.id, header: "I am out of ideas already", body: "Seriously...")
 Notice.create!(order_num: 0, client_id: client2.id, header: "Basketball notice", body: "You shouldn't see this unless you changed the site url")
 
-Game.create!(client_id: client1.id, home_team_id: 1, away_team_id: 2, home_team_score: 3, away_team_score: 1)
+Game.create!(client_id: client1.id, home_team_id: 1, away_team_id: 2, home_team_score: 3, away_team_score: 1, date: Date.today, time: Time.now)
 
 puts "\n----------FINISHED SEEDS---------\n"

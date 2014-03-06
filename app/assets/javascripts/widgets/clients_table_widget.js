@@ -42,7 +42,7 @@ $.widget("frankie.clients_table", $.frankie.table_widget, {
   _bind_remove_client_buttons: function(element) {
     this.remove_buttons = $(element).find("[data-button=remove]");
     $(this.remove_buttons).click(function(event) {
-      this._click_remove_client($(event.target).closest("tr"));
+      this._click_remove_client($(event.currentTarget).closest("tr"));
     }.bind(this));
   },
 

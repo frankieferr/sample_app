@@ -31,7 +31,7 @@ $.widget("frankie.new_form_widget", $.frankie.frankie_widget, {
 		$(this.new_form).find("[data-input=form]").keydown(function(event) {
 			if(event.keyCode == '13') {
 				this._click_submit();
-				return false;
+				event.preventDefault();
 			}
 		}.bind(this));
 	},
