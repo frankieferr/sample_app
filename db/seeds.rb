@@ -32,7 +32,7 @@ create_user({email: "super@admin.com", password: "test", password_confirmation: 
 # Teams
 
 team1 = Team.create!(client_id: client1.id, name: "Frankie's Team")
-team2 = Team.create!(client_id: client1.id, name: "The Swag Team")
+team2 = Team.create!(client_id: client1.id, name: "The Best Team")
 team3 = Team.create!(client_id: client1.id, name: "Bullets", accepted: false)
 
 team4 = Team.create!(client_id: client2.id, name: "AC Milan")
@@ -46,7 +46,7 @@ Player.create!(client_id: client1.id, name: "Steph", age: 17, number: 20, team_i
 Player.create!(client_id: client1.id, name: "Marco", age: 18, number: 8, team_id: team1.id)
 Player.create!(client_id: client1.id, name: "Gabri", age: 18, number: 1, team_id: team1.id)
 
-Player.create!(client_id: client1.id, name: "Steph Swag", age: 17, number: 20, team_id: team2.id)
+Player.create!(client_id: client1.id, name: "Steph", age: 17, number: 20, team_id: team2.id)
 
 Player.create!(client_id: client2.id, name: "Kaka", age: 28, number: 22, team_id: team4.id)
 

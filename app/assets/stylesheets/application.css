@@ -56,6 +56,8 @@ div.home_notice>div.home_notice_head {
 	height:400px; 
 	background-size:100% 100%; 
 	background-repeat:no-repeat;
+	background-color:steelblue;
+	color:white;
 }
 
 .accepted {
